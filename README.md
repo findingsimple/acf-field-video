@@ -52,6 +52,13 @@ function my_register_fields()
 
 1. Retrieve the video by using standard ACF functions for obtaining field values.
 
+## Screenshots ##
+
+![Screenshot 1](screenshot1.jpg)
+
+![Screenshot 2](screenshot2.jpg)
+
+![Screenshot 3](screenshot3.jpg)
 
 ## Changelog ##
 
