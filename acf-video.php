@@ -16,11 +16,7 @@ class acf_field_video_plugin
 	/*
 	*  Construct
 	*
-	*  @description: 
-	*  @since: 3.6
-	*  @created: 1/04/13
 	*/
-	
 	function __construct()
 	{
 		// set text domain
@@ -38,11 +34,7 @@ class acf_field_video_plugin
 	/*
 	*  register_fields
 	*
-	*  @description: 
-	*  @since: 3.6
-	*  @created: 1/04/13
 	*/
-	
 	function register_fields()
 	{
 		include_once('video.php');
