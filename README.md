@@ -11,6 +11,14 @@ Adds a 'video' field type for the [Advanced Custom Fields](http://wordpress.org/
 
 Adds a 'video' field type for the [Advanced Custom Fields](http://wordpress.org/extend/plugins/advanced-custom-fields/) WordPress plugin.
 
+Compatible with Youtube and Vimeo videos/urls.
+
+Provides ability to display a preview of the video (thumbnail, video embed or none) and adjusts the video width/size using fitvid.js for improved responsiveness.
+
+Thumbnails are pulled automatically from Youtube or Vimeo.
+
+Uses the built in wordpress oembed feature for video embedding.
+
 ## Compatibility ##
 
 This add-on will work with:
