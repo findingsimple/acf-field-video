@@ -204,7 +204,11 @@ class acf_field_video extends acf_field
 		// get vimeo thumbnail
 		if( $video['type'] == 'vimeo' )
 			$thumbnail_uri = self::get_vimeo_thumbnail_uri( $video['id'] );
-		
+
+		// get wistia thumbnail
+		if( $video['type'] == 'wistia' )
+			$thumbnail_uri = self::get_wistia_thumbnail_uri( $video_uri );
+
 		// get default/placeholder thumbnail
 		if( empty( $thumbnail_uri ) || is_wp_error( $thumbnail_uri ) )
 			$thumbnail_uri = ''; 
@@ -262,6 +266,20 @@ class acf_field_video extends acf_field
 			$video_id = ltrim( $parse['path'],'/' );	
 						
 		}
+
+		$host_names = explode(".", $parse['host'] );
+
+		$rebuild = $host_names[1] . '.' . $host_names[2];
+
+		// Url is an oembed url wistia.com
+		if ( ( $rebuild == 'wistia.com' ) || ( $rebuild == 'wi.st.com' ) ) {
+		
+			$video_type = 'wistia';
+				
+			if ( strpos( $parse['path'], 'medias' ) == 1 )
+					$video_id = end( explode( '/', $parse['path'] ) );
+		
+		}
 		
 		// If recognised type return video array
 		if ( !empty( $video_type ) ) {
@@ -299,6 +317,28 @@ class acf_field_video extends acf_field
 		}
 		
 	}
+
+	/**
+	 * Takes a wistia oembed url and gets the video thumbnail url.
+	 */
+	function get_wistia_thumbnail_uri( $video_uri ) {
+
+		if ( empty($video_uri) )
+			return false;
+
+		$wistia_api_uri = 'http://fast.wistia.com/oembed?url=' . $video_uri;
+
+		$wistia_response = wp_remote_get( $wistia_api_uri );
+
+		if( is_wp_error( $wistia_response ) ) {
+			return $wistia_response;
+		} else {
+			$wistia_response = json_decode( $wistia_response['body'], true );
+			return $wistia_response['thumbnail_url'];
+		}
+		
+	}
+
 	
 }
 
