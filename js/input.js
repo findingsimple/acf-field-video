@@ -18,7 +18,7 @@
 	
 	$(document).live('acf/setup_fields', function(e, postbox){
 			
-    	$(".acf-video-field-embed").fitVids();
+    	$(".acf-video-field-embed").fitVids({ customSelector: "iframe[src^='http://fast.wistia.net']"});
 				
 	});
 
