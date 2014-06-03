@@ -235,7 +235,7 @@ class acf_field_video extends acf_field
 		
 			$video_type = 'youtube';
 			
-			$video_id = ltrim( $urls['path'],'/' );	
+			$video_id = ltrim( $parse['path'],'/' );	
 			
 		}
 		
@@ -248,7 +248,7 @@ class acf_field_video extends acf_field
 			
 			parse_str( $parse['query'] );
 			
-			$video_id = $v;	
+			$video_id = '';	
 			
 			if ( !empty( $feature ) )
 				$video_id = end( explode( 'v=', $parse['query'] ) );
@@ -269,7 +269,7 @@ class acf_field_video extends acf_field
 
 		$host_names = explode(".", $parse['host'] );
 
-		$rebuild = $host_names[1] . '.' . $host_names[2];
+		$rebuild = (!empty($host_names[1]) ? $host_names[1] : '') . '.' . (!empty($host_names[2]) ? $host_names[2] : '');
 
 		// Url is an oembed url wistia.com
 		if ( ( $rebuild == 'wistia.com' ) || ( $rebuild == 'wi.st.com' ) ) {
