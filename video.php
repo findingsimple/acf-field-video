@@ -199,7 +199,7 @@ class acf_field_video extends acf_field
 		
 		// get youtube thumbnail
 		if ( $video['type'] == 'youtube' )
-			$thumbnail_uri = 'http://img.youtube.com/vi/' . $video['id'] . '/hqdefault.jpg';
+			$thumbnail_uri = 'http://img.youtube.com/vi/' . $video['id'] . '/maxresdefault.jpg';
 		
 		// get vimeo thumbnail
 		if( $video['type'] == 'vimeo' )
