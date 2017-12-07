@@ -199,7 +199,7 @@ class acf_field_video extends acf_field
 		
 		// get youtube thumbnail
 		if ( $video['type'] == 'youtube' )
-			$thumbnail_uri = 'http://img.youtube.com/vi/' . $video['id'] . '/hqdefault.jpg';
+			$thumbnail_uri = 'https://img.youtube.com/vi/' . $video['id'] . '/hqdefault.jpg';
 		
 		// get vimeo thumbnail
 		if( $video['type'] == 'vimeo' )
@@ -230,7 +230,7 @@ class acf_field_video extends acf_field
 		$video_type = '';
 		$video_id = '';
 		
-		// Url is http://youtu.be/xxxx
+		// Url is https://youtu.be/xxxx
 		if ( $parse['host'] == 'youtu.be' ) {
 		
 			$video_type = 'youtube';
@@ -239,9 +239,9 @@ class acf_field_video extends acf_field
 			
 		}
 		
-		// Url is http://www.youtube.com/watch?v=xxxx 
-		// or http://www.youtube.com/watch?feature=player_embedded&v=xxx
-		// or http://www.youtube.com/embed/xxxx
+		// Url is https://www.youtube.com/watch?v=xxxx 
+		// or https://www.youtube.com/watch?feature=player_embedded&v=xxx
+		// or https://www.youtube.com/embed/xxxx
 		if ( ( $parse['host'] == 'youtube.com' ) || ( $parse['host'] == 'www.youtube.com' ) ) {
 		
 			$video_type = 'youtube';
@@ -258,7 +258,7 @@ class acf_field_video extends acf_field
 			
 		}
 		
-		// Url is http://www.vimeo.com
+		// Url is https://www.vimeo.com
 		if ( ( $parse['host'] == 'vimeo.com' ) || ( $parse['host'] == 'www.vimeo.com' ) ) {
 		
 			$video_type = 'vimeo';
@@ -305,7 +305,7 @@ class acf_field_video extends acf_field
 	 */
 	function get_vimeo_thumbnail_uri( $clip_id ) {
 
-		$vimeo_api_uri = 'http://vimeo.com/api/v2/video/' . $clip_id . '.php';
+		$vimeo_api_uri = 'https://vimeo.com/api/v2/video/' . $clip_id . '.php';
 
 		$vimeo_response = wp_remote_get( $vimeo_api_uri );
 
@@ -326,7 +326,7 @@ class acf_field_video extends acf_field
 		if ( empty($video_uri) )
 			return false;
 
-		$wistia_api_uri = 'http://fast.wistia.com/oembed?url=' . $video_uri;
+		$wistia_api_uri = 'https://fast.wistia.com/oembed?url=' . $video_uri;
 
 		$wistia_response = wp_remote_get( $wistia_api_uri );
 
